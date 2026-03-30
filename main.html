@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Andre Juvento</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+
+    <nav id="mySidebar" class="sidebar">
+        <div class="sidebar-header">
+            <span class="closebtn" onclick="toggleMenu()">×</span>
+        </div>
+        <div class="menu-items">
+            <a href="javascript:void(0)" class="nav-item active" onclick="showSection('welcome')">Home</a>
+            <a href="javascript:void(0)" class="nav-item" onclick="showSection('about')">About Me</a>
+            <a href="javascript:void(0)" class="nav-item" onclick="showSection('contact')">Contact</a>
+            <a href="javascript:void(0)" class="nav-item" onclick="showSection('experience')">Experience</a>
+            <a href="javascript:void(0)" class="nav-item" onclick="showSection('education')">Education</a>
+            <a href="javascript:void(0)" class="nav-item" onclick="showSection('project')">Project</a>
+        </div>
+    </nav>
+
+    <div id="mainContent" class="main">
+        <header class="header">
+            <button id="menuBtn" class="openbtn" onclick="toggleMenu()">☰</button>
+            <h1>Andre Juvento</h1>
+        </header>
+
+        <div id="welcome" class="section">
+            <h2 class="section-title">Welcome</h2>
+            <div class="card">
+                <p>Selamat Datang di Portofolio Saya.</p>
+            </div>
+        </div>
+
+        <div id="about" class="section" style="display:none;">
+            <h2 class="section-title">About Me</h2>
+            <div class="card">
+                <p>Ini adalah konten untuk About Me.</p>
+            </div>
+        </div>
+
+        <div class="section" id="contact" style="display:none;">
+            <h2 class="section-title">Contact</h2>
+            <div class="card">
+                <p>Ini adalah konten untuk Contact.</p>
+            </div>
+        </div>
+
+        <div class="section" id="experience" style="display:none;">
+            <h2 class="section-title">Experience</h2>
+            <div class="card">
+                <p>Ini adalah konten untuk Experience.</p>
+            </div>
+        </div>
+
+        <div class="section" id="education" style="display:none;">
+            <h2 class="section-title">Education</h2>
+            <div class="card">
+                <p>Ini adalah konten untuk Education.</p>
+            </div>
+        </div>
+
+        <div class="section" id="project" style="display:none;">
+            <h2 class="section-title">Project</h2>
+            <div class="card">
+                <p>Ini adalah konten untuk Project.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+<script>
+    /* --- Fungsi untuk Buka/Tutup Menu --- */
+function toggleMenu() {
+    const sidebar = document.getElementById("mySidebar");
+    const mainContent = document.getElementById("mainContent");
+    const menuBtn = document.getElementById("menuBtn");
+
+    // Periksa status lebar menu
+    if (sidebar.style.width === "250px") {
+        // Jika terbuka, tutup
+        sidebar.style.width = "0";
+        mainContent.style.marginLeft = "0";
+        menuBtn.style.display = "block";
+        // Sembunyikan "X" di dalam sidebar, tombol "☰" di main kembali muncul
+    } else {
+        // Jika tertutup, buka
+        sidebar.style.width = "250px";
+        menuBtn.style.display = "none"; // Sembunyikan tombol "☰" di main
+        mainContent.style.marginLeft = "250px"; // Geser konten utama
+        // Tombol "☰" akan tersembunyi karena letaknya di dalam header yang tergeser
+    }
+}
+
+/* --- Fungsi untuk Menampilkan Section --- */
+function showSection(sectionId) {
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(sec => sec.style.display = 'none');
+
+    document.getElementById(sectionId).style.display = 'block';
+
+    // Update class active pada tombol
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+        item.classList.remove('active');
+        if(item.innerText.toLowerCase().includes(sectionId.toLowerCase()) || 
+           (sectionId === 'welcome' && item.innerText === 'Home')) {
+            item.classList.add('active');
+        }
+    });
+
+    // Tutup menu setelah klik (cocok untuk tampilan mobile)
+    toggleMenu();
+}
+</script>
+
+</html>
+
+    
