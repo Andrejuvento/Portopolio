@@ -10,6 +10,10 @@ html{
     scroll-behavior: smooth; /* Animasi scroll yang halus */
 }
 
+p{
+    text-align: justify;
+}
+
 /* --- Area Konten Utama --- */
 .main {
     transition: margin-left .3s; /* Animasi mulus saat menu terbuka */

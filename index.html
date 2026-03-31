@@ -70,15 +70,31 @@
         </div>
 
         <div class="section" id="experience" style="display:none;">
+            <h2 class="section-title">Experience</h2>
+            <div class="card">
+                <p>Ini adalah konten untuk Experience.</p>
+            </div>
+        </div>
+
+        <div class="section" id="education" style="display:none;">
+            <h2 class="section-title">Education</h2>
+            <div class="card">
+                <p>Ini adalah konten untuk Education.</p>
+            </div>
+        </div>
+
+        <div class="section" id="project" style="display:none;">
             <div class="accordion-container">
                 <div class="accordion-item">
                     <button class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>Python</span>
+                        <span>Mysql</span>
                         <span class="icon">▼</span>
                     </button>
                     <div class="accordion-content">
-                        <p>Tentang cara pembelajaran serta project apa saja yang sudah dibuat. 
-                        Contoh: Web Scraper menggunakan Selenium dan Automation tools.</p>
+                        <p>
+                            Membangun database untuk aplikasi web, termasuk login, manajemen data, dan integrasi dengan backend PHP.
+                            Serta mempelajari sedikit bagaimana menggunakan database untuk aplikasi mobile dengan flutter.
+                        </p>
                     </div>
                 </div>
 
@@ -101,20 +117,46 @@
                         <p>Pengalaman dalam pemrograman sistem dan struktur data.</p>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="section" id="education" style="display:none;">
-            <h2 class="section-title">Education</h2>
-            <div class="card">
-                <p>Ini adalah konten untuk Education.</p>
-            </div>
-        </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>C++</span>
+                        <span class="icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Pengalaman dalam pemrograman sistem dan struktur data.</p>
+                    </div>
+                </div>
 
-        <div class="section" id="project" style="display:none;">
-            <h2 class="section-title">Project</h2>
-            <div class="card">
-                <p>Ini adalah konten untuk Project.</p>
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>C++</span>
+                        <span class="icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Pengalaman dalam pemrograman sistem dan struktur data.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>C++</span>
+                        <span class="icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Pengalaman dalam pemrograman sistem dan struktur data.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>C++</span>
+                        <span class="icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Pengalaman dalam pemrograman sistem dan struktur data.</p>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -181,6 +223,7 @@ function updateNavButtons(sectionId) {
 function toggleAccordion(header) {
     const item = header.parentElement;
     
+    // Opsional: Tutup akordion lain saat satu dibuka
     const allItems = document.querySelectorAll('.accordion-item');
     allItems.forEach(i => {
         if (i !== item) i.classList.remove('active');
