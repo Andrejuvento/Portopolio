@@ -31,28 +31,76 @@
         <div id="welcome" class="section">
             <h2 class="section-title">Welcome</h2>
             <div class="card">
-                <p>Selamat Datang di Portofolio Saya.</p>
+                <p>
+                    Selamat Datang di Portofolio Saya, di website ini saya akan menampilkan informasi tentang diri saya, pengalaman kerja, pendidikan, dan project yang telah saya kerjakan.
+                    Saya berharap dengan adanya portofolio ini, Anda dapat mengenal saya lebih baik dan melihat kemampuan serta pengalaman yang saya miliki.
+                    Terima kasih telah mengunjungi portofolio saya, jangan ragu untuk menghubungi saya jika Anda memiliki pertanyaan.
+                </p>
             </div>
         </div>
 
         <div id="about" class="section" style="display:none;">
             <h2 class="section-title">About Me</h2>
             <div class="card">
-                <p>Ini adalah konten untuk About Me.</p>
+                <p>
+                    Saya menyelesaikan kuliah pada September 2025 di Institute Bisnis dan Teknologi Pelita Indonesia dengan jurusan Teknologi Informasi dan melakukan kerja sambal kuliah di First Resources selama 4 tahun di department Invoicing.
+                    Saya membuat proyek simple pada department saya untuk mempermudah pekerjaan dalam penggunaan Excel/Spreadsheet yang dimana penggunaan sampai saat ini.
+                    Serta memberikan ide untuk proyek-proyek yang sedang dilaksanakan dan proyek kedepannya. 
+                    Saya juga memiliki pengalaman dalam menggunakan beberapa software seperti davinci resolve, adobe photoshop, blender, dan beberapa aplikasi lainnya yang saya gunakan untuk mengerjakan tugas kuliah dan pekerjaan saya.
+                    Saya mempelajari beberapa bahasa pemrograman seperti HTML, CSS, JavaScript, PHP, MYSQL, Python, Godot, Unity(C#), C++, Excel(VBA), flutter, nextJS. Saya mempelajari bahasa pemrograman tersebut melalui proyek kecil yang dibantu oleh AI,
+                    serta melalui video tutorial di YouTube sehingga ada beberapa kekurangan dalam pemahaman saya tentang bahasa pemrograman tersebut, namun saya terus belajar dan berusaha untuk meningkatkan kemampuan saya dalam bahasa pemrograman tersebut.
+                </p>
             </div>
         </div>
 
         <div class="section" id="contact" style="display:none;">
             <h2 class="section-title">Contact</h2>
             <div class="card">
-                <p>Ini adalah konten untuk Contact.</p>
+                <p>
+                    Kontak saya dapat dihubungi melalui:<br>
+                    <ul>
+                        <li><img src="img/email.png" alt="Email Icon" style="width:20px; vertical-align:middle;"> andrejuvento7@gmail.com</li>
+                        <li><img src="img/phone.png" alt="Email Icon" style="width:20px; vertical-align:middle;"> 082117381355</li>
+                        <li><img src="img/instagram.png" alt="Email Icon" style="width:20px; vertical-align:middle;"> andrejuvento</li>
+                    </ul>
+                    
+
+                </p>
             </div>
         </div>
 
         <div class="section" id="experience" style="display:none;">
-            <h2 class="section-title">Experience</h2>
-            <div class="card">
-                <p>Ini adalah konten untuk Experience.</p>
+            <div class="accordion-container">
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Python</span>
+                        <span class="icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Tentang cara pembelajaran serta project apa saja yang sudah dibuat. 
+                        Contoh: Web Scraper menggunakan Selenium dan Automation tools.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>HTML, CSS, JAVASCRIPT</span>
+                        <span class="icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Membangun website portofolio responsif dan aplikasi web interaktif.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>C++</span>
+                        <span class="icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Pengalaman dalam pemrograman sistem dan struktur data.</p>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -83,7 +131,7 @@ function toggleMenu() {
     const menuBtn = document.getElementById("menuBtn");
 
     // Periksa status lebar menu
-    if (sidebar.style.width === "250px") {
+    if (sidebar.style.width === "280px") {
         // Jika terbuka, tutup
         sidebar.style.width = "0";
         mainContent.style.marginLeft = "0";
@@ -91,9 +139,9 @@ function toggleMenu() {
         // Sembunyikan "X" di dalam sidebar, tombol "☰" di main kembali muncul
     } else {
         // Jika tertutup, buka
-        sidebar.style.width = "250px";
+        sidebar.style.width = "280px";
         menuBtn.style.display = "none"; // Sembunyikan tombol "☰" di main
-        mainContent.style.marginLeft = "250px"; // Geser konten utama
+        mainContent.style.marginLeft = "290px"; // Geser konten utama
         // Tombol "☰" akan tersembunyi karena letaknya di dalam header yang tergeser
     }
 }
@@ -101,23 +149,51 @@ function toggleMenu() {
 /* --- Fungsi untuk Menampilkan Section --- */
 function showSection(sectionId) {
     const sections = document.querySelectorAll('.section');
-    sections.forEach(sec => sec.style.display = 'none');
+    sections.forEach(sec => {
+        sec.style.display = 'none';
+        sec.classList.remove('animate-swipe');
+    });
 
-    document.getElementById(sectionId).style.display = 'block';
+    const activeSection = document.getElementById(sectionId);
+    if(activeSection) {
+        activeSection.style.display = 'block';
+        // Tambahkan animasi berdasarkan section
+        setTimeout(() => {
+            activeSection.classList.add('animate-swipe');
+        }, 20); // Delay kecil untuk memastikan display sudah berubah
 
-    // Update class active pada tombol
+        updateNavButtons(sectionId);
+    }
+}
+
+function updateNavButtons(sectionId) {
     const navItems = document.querySelectorAll('.nav-item');
     navItems.forEach(item => {
         item.classList.remove('active');
-        if(item.innerText.toLowerCase().includes(sectionId.toLowerCase()) || 
-           (sectionId === 'welcome' && item.innerText === 'Home')) {
+        // Logika pencocokan teks menu dengan ID
+        if (item.getAttribute('onclick').includes(sectionId)) {
             item.classList.add('active');
         }
     });
-
-    // Tutup menu setelah klik (cocok untuk tampilan mobile)
-    toggleMenu();
+    toggleMenu(); // Tutup menu setelah memilih section
 }
+
+function toggleAccordion(header) {
+    const item = header.parentElement;
+    
+    const allItems = document.querySelectorAll('.accordion-item');
+    allItems.forEach(i => {
+        if (i !== item) i.classList.remove('active');
+    });
+
+    // Toggle kelas active pada item yang diklik
+    item.classList.toggle('active');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    showSection('welcome'); // Tampilkan section welcome saat halaman dimuat
+    toggleMenu(); // Pastikan menu tertutup saat halaman dimuat
+}); 
 </script>
 
 </html>
